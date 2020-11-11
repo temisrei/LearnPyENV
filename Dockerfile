@@ -1,6 +1,6 @@
 FROM nvidia/cuda:10.2-cudnn7-runtime-ubuntu18.04
 
-LABEL maintainer="Rei Lin" email="temisrei@gmail.com" version="v0.1.0"
+LABEL maintainer="Rei Lin" email="temisrei@gmail.com" version="v0.2.0"
 
 ENV PYTHONIOENCODING UTF-8
 
@@ -23,3 +23,8 @@ COPY ./requirements.txt ./
 RUN pip install --no-cache-dir --requirement ./requirements.txt
 
 WORKDIR /workspace
+COPY ./hello.py /workspace
+
+EXPOSE 8888
+
+CMD [ "python", "hello.py" ]
